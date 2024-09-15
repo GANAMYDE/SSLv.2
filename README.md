@@ -1,2 +1,2 @@
 # SSLv.2
-Website for Smart Send
+Simple http-server test for web deployment on local server.
