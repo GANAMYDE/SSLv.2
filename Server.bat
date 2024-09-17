@@ -30,4 +30,4 @@ timeout /t 5 /nobreak >nul
 :: Open the updated HTML file in the default web browser
 start "" http://localhost:3000/homepage.html 
 
-ENDLOCAL
+ENDLOCALL
