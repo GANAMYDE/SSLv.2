@@ -1,49 +1,42 @@
-import React, { useEffect } from 'react';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom'; // Import Navigate for redirection
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import './assets/Dashboard.css';
 
 function App() {
-  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
 
-  // Check if the user is authenticated (stored in localStorage)
-  const isAuthenticated = localStorage.getItem('user');
-
-  // Handle logout functionality
-  const handleLogout = () => {
-    localStorage.removeItem('user'); // Clear user data
-    navigate('/'); // Redirect to login
-  };
+  useEffect(() => {
+    // Check if the user is authenticated by checking localStorage
+    const user = localStorage.getItem('user');
+    setIsAuthenticated(!!user);
+  }, []);
 
   // Protected Route component
   const ProtectedRoute = ({ children }) => {
+    if (isAuthenticated === null) {
+      // While checking auth, show a loading indicator
+      return <div>Loading...</div>;
+    }
+
     if (!isAuthenticated) {
       // If not authenticated, redirect to login page
       return <Navigate to="/" />;
     }
+
     return children; // If authenticated, render the children (Dashboard)
   };
-
-  // Optional: Redirect to login on token expiry or invalid user session
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/');
-    }
-  }, [isAuthenticated, navigate]);
 
   return (
     <div className="App">
       <Routes>
-        {/* Public Route: Login */}
         <Route path="/" element={<Login />} />
-
-        {/* Protected Route: Dashboard */}
         <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
-              <Dashboard onLogout={handleLogout} />
+              <Dashboard />
             </ProtectedRoute>
           }
         />
