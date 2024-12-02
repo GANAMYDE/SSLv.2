@@ -1,52 +1,65 @@
-/* Login Container Styling */
 .login-container {
-  width: 100%;
   max-width: 400px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
   text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Input Field Styling */
 input {
   width: 100%;
   padding: 0.75rem;
   margin: 0.5rem 0;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
 }
 
-/* Focus effect for inputs */
-input:focus {
-  border-color: #007bff;
-  outline: none;
+.password-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Error Feedback for Inputs */
-input.error {
-  border-color: red;
-}
-
-/* Button Styling */
 button {
+  width: 100%;
   padding: 0.75rem;
+  margin-top: 1rem;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 100%;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
 }
 
-/* Button hover effect 
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  margin-top: 0.5rem;
+}
+
+.success {
+  color: green;
+  margin-top: 0.5rem;
+}
+
+.oauth-options {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.forgot-password {
+  background: none;
+  border: none;
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 1rem;
+}
