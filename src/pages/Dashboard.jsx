@@ -29,7 +29,7 @@ const Dashboard = () => {
       try {
         const [newsResponse, financialResponse, cryptoResponse] = await Promise.all([
           axios.get(
-            'https://newsapi.org/v2/top-headlines?country=ug&category=business&apiKey=YOUR_NEWS_API_KEY'
+            'https://newsapi.org/v2/top-headlines?country=ug&category=business&apiKey=1511466b366b45fd82015808536dd01c'
           ),
           axios.get('https://api.exchangerate-api.com/v4/latest/USD'),
           axios.get(
